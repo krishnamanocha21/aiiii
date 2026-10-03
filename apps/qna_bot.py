@@ -2,9 +2,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+import streamlit as st
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
-import streamlit as st
+
 
 # ---------------- STRUCTURED OUTPUT ----------------
 class QnaResponse(BaseModel):
