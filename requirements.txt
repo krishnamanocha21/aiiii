@@ -4,6 +4,7 @@ langchain-openai
 dotenv
 langchain-anthropic
 langchain-google-genai
+langchain-groq
 streamlit
 pydantic
 langchain-community
