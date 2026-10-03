@@ -19,12 +19,17 @@ if "memory" not in st.session_state:
     #this is used for priting the chathistory
     st.session_state.history=[]
 
-agent = create_agent(
-    model=llm, 
-    tools=tools,
-    checkpointer=st.session_state.memory,
-    system_prompt="You are a amazing ai agent and can search on google as well"
-)
+
+#USING THIS HELPS US TO MAKE THE AGENT ONCE AND STORE IT IN THE CACHE
+@st.cache_resource
+def get_agent():
+    return create_agent(
+        model=llm,
+        tools=tools,
+        checkpointer=MemorySaver(),
+    )
+
+agent = get_agent()
 
 #now building the web interface
 st.subheader("QuickAnswer - Answers at the speed of thought")   
